@@ -1,20 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-android</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <TargetFramework>net8.0-android34.0</TargetFramework>
     <SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <Nullable>enable</Nullable>
+    <UseMauiEssentials>true</UseMauiEssentials>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationId>pl.MateuszLas421.LogcatHttpClient</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
+    <EnableLLVM>True</EnableLLVM>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
+    <EnableLLVM>True</EnableLLVM>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\layout\activity_httpclienttest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Refit" Version="7.0.0" />
+    <PackageReference Include="Refit.Newtonsoft.Json" Version="7.0.0" />
     <PackageReference Include="Serilog" Version="3.1.1" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-    <PackageReference Include="Xamarin.AndroidX.Activity" Version="1.8.2.1" />
+    <PackageReference Include="Serilog.Sinks.Xamarin" Version="1.0.0" />
+    <PackageReference Include="System.Reactive" Version="6.0.1" />
+    <PackageReference Include="Xamarin.AndroidX.Activity" Version="1.9.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Microsoft.Maui.Essentials" Version="8.0.40" />
   </ItemGroup>
 </Project>
